@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Selva Babu Selvamani - Bioinformatics Researcher specializing in genomics, transcriptomics, and computational biology">
+    <title>Selva Babu Selvamani - Bioinformatics Researcher</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Libre+Baskerville:wght@400;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f172a;        /* Deep academic navy */
+            --secondary: #1e293b;      /* Rich slate for headings */
+            --accent: #1e40af;         /* Scientific blue (better than gold for research) */
+            --accent-light: #3b82f6;   /* Soft blue highlight */
+            --background: #f9fbff;     /* Clean scientific background (less grey) */
+            --surface: #ffffff;        /* Card backgrounds */
+            --text: #111827;           /* Strong readable text */
+            --text-muted: #6b7280;     /* Subtle academic grey */
+            --border: #e5e7eb;         /* Soft borders */
+            --shadow: rgba(15, 23, 42, 0.08); /* Softer academic shadow */
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            background: var(--background);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(250, 250, 249, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 4px 20px var(--shadow);
+        }
+
+        nav .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.4s ease;
+        }
+
+        .logo:hover::after {
+            width: 100%;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 3.5rem;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a:hover::before {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 10rem 4rem 6rem;
+            position: relative;
+            background: linear-gradient(135deg, #fafaf9 0%, #f5f5f4 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(201,136,46,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .hero .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero-label {
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .hero-content h1 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            letter-spacing: -1px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+        }
+
+        .hero-content .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+            line-height: 1.6;
+            font-style: italic;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+        }
+
+        .hero-content .description {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            line-height: 1.9;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.8s forwards;
+        }
+
+        .btn {
+            padding: 1.2rem 3rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.4s ease;
+            font-family: 'Raleway', sans-serif;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 10px 30px rgba(201, 136, 46, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(201, 136, 46, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Divider */
+        .section-divider {
+            width: 60px;
+            height: 2px;
+            background: var(--accent);
+            margin: 0 auto 3rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 8rem 4rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 5rem;
+        }
+
+        .section-label {
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        /* About Section */
+        .about-section {
+            background: var(--surface);
+            padding: 8rem 4rem;
+            position: relative;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-text p {
+            font-size: 1.15rem;
+            line-height: 2;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            text-align: justify;
+        }
+
+        .about-text p:first-letter {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 4rem;
+            line-height: 1;
+            float: left;
+            margin-right: 0.5rem;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .education-card {
+            padding: 2.5rem;
+            background: var(--background);
+            border-left: 3px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .education-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .education-card h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .education-card .institution {
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .education-card .details {
+            display: flex;
+            justify-content: space-between;
+            color: var(--accent);
+            font-weight: 600;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+        /* ===== Research Journey (Claude Style Fix) ===== */
+        #timeline {
+            padding: 80px 0;
+            background: transparent; /* removes ugly grey block */
+        }
+
+        .timeline-container {
+            max-width: 900px;
+            margin: 0 auto; /* centers perfectly */
+            padding: 0 20px;
+        }
+
+        .timeline {
+            border-left: 2px solid #1e3a8a;
+            margin-top: 40px;
+            padding-left: 30px;
+        }
+
+        .timeline-item {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -38px;
+            top: 6px;
+            width: 14px;
+            height: 14px;
+            background: #1e3a8a;
+            border-radius: 50%;
+        }
+
+        .timeline-item h3 {
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* Research Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--surface);
+            padding: 3rem;
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: var(--accent);
+            transition: height 0.4s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px var(--shadow);
+        }
+
+        .project-card:hover::before {
+            height: 100%;
+        }
+
+        .project-number {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 3rem;
+            color: rgba(201, 136, 46, 0.2);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .project-tag {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: rgba(201, 136, 46, 0.1);
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .project-card h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            line-height: 1.4;
+        }
+
+        .project-card p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Publications */
+        .publications-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .publication-item {
+            background: var(--surface);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .publication-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0;
+            height: 100%;
+            background: var(--accent);
+            transition: width 0.3s ease;
+            opacity: 0.1;
+        }
+
+        .publication-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .publication-item:hover::before {
+            width: 5px;
+        }
+
+        .publication-item p {
+            color: var(--text-muted);
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
+
+        .publication-item strong {
+            color: var(--primary);
+        }
+
+        .publication-item em {
+            color: var(--secondary);
+        }
+
+        .impact-factor {
+            display: inline-block;
+            margin-left: 1rem;
+            padding: 0.3rem 0.8rem;
+            background: rgba(201, 136, 46, 0.15);
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.9rem;
+            font-style: normal;
+            letter-spacing: 1px;
+        }
+
+        .publication-stats {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 3rem;
+            background: linear-gradient(135deg, rgba(201, 136, 46, 0.05), rgba(201, 136, 46, 0.1));
+        }
+
+        .publication-stats .stat-number {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 3rem;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-stats p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .skill-category {
+            background: var(--surface);
+            padding: 3rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            box-shadow: 0 15px 40px var(--shadow);
+        }
+
+        .skill-category h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.6rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .skill-category h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 1rem 0;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .skill-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .skill-list li:hover {
+            color: var(--primary);
+            padding-left: 2rem;
+        }
+
+        .skill-list li:hover::before {
+            opacity: 1;
+        }
+
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* CV Section */
+        .cv-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 6rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cv-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(201, 136, 46, 0.1) 0%, transparent 70%);
+        }
+
+        .cv-section h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cv-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cv-section .btn {
+            background: white;
+            color: var(--primary);
+            position: relative;
+            z-index: 1;
+        }
+
+        .cv-section .btn:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--surface);
+            padding: 8rem 4rem;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin: 4rem 0;
+        }
+
+        .contact-item {
+            padding: 2rem;
+            background: var(--background);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .contact-item .icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.05rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent);
+        }
+
+        .contact-item .label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .projects-grid,
+            .skills-grid,
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            nav .container,
+            section {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <a href="#" class="logo">SBS</a>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-label">Bioinformatics Researcher</div>
+                <h1>Selva Babu Selvamani</h1>
+                <p class="subtitle">Unraveling biological complexity through computational genomics and systems biology</p>
+                <p class="description">
+                    Senior Research Fellow at ICAR-NBAIR specializing in next-generation sequencing analysis, transcriptomics, and metagenomics. Dedicated to advancing agricultural biotechnology through innovative computational approaches.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#publications" class="btn btn-primary">View Publications</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="about-content">
+            <div class="section-header">
+                <div class="section-label">About</div>
+                <h2 class="section-title">Academic Background</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="about-text">
+                <p>
+                    I am a dedicated bioinformatics researcher with specialized expertise in genomics, transcriptomics, and computational biology. My academic journey has been marked by excellence and a deep commitment to advancing our understanding of biological systems through computational approaches.
+                </p>
+                <p>
+                    Previously served as a Senior Research Fellow at the Division of Genomic Resources, ICAR-National Bureau of Agricultural Insect Resources in Bangalore, I focus on NGS data analysis for exploring rapid speciation and adaptation in agricultural pests. My research encompasses comprehensive omics data analysis, with particular emphasis on identifying genes for dsRNA design in RNAi applications and insecticidal resistance studies.
+                </p>
+                <p>
+                    With over 22 published research papers in reputed international journals—several with impact factors exceeding 8.5—and extensive experience in both computational and wet-lab techniques, I bridge the gap between biological questions and computational solutions. My expertise spans genome assembly, transcriptome analysis, molecular docking, and various advanced omics data analysis pipelines.
+                </p>
+            </div>
+
+            <div class="education-grid">
+                <div class="education-card">
+                    <h3>Master of Science</h3>
+                    <p class="institution">Agricultural Bioinformatics<br>Tamil Nadu Agricultural University, Coimbatore</p>
+                    <div class="details">
+                        <span>2020 - 2022</span>
+                        <span>CGPA: 8.69/10</span>
+                    </div>
+                </div>
+                <div class="education-card">
+                    <h3>Bachelor of Technology</h3>
+                    <p class="institution">Bioinformatics<br>Tamil Nadu Agricultural University, Coimbatore</p>
+                    <div class="details">
+                        <span>2016 - 2020</span>
+                        <span>CGPA: 8.15/10</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CV Download Section -->
+    <div class="cv-section">
+        <h2>Complete Curriculum Vitae</h2>
+        <p>Download a comprehensive overview of my academic background, research experience, publications, and technical expertise.</p>
+        <a href="Curriculum_vitae_Selva_Babu_Selvamani.pdf" download class="btn">Download CV</a>
+    </div>
+    <!-- Research Journey Section -->
+    <section id="timeline">
+        <div class="timeline-container">
+            <h2 class="section-title">Research Journey</h2>
+            <p class="section-subtitle">
+                Academic and research journey in bioinformatics, genomics, and omics data analysis.
+            </p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Senior Research Fellow – ICAR-NBAIR (Completed)</h3>
+                    <span class="timeline-date">2022 – 2024</span>
+                    <p>
+                        Conducted advanced bioinformatics analyses including genome assembly,
+                        transcriptomics (RNA-Seq), metagenomics, and multi-omics data integration
+                        for insect genomics and adaptation studies.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>M.Sc. Bioinformatics</h3>
+                    <span class="timeline-date">2020 – 2022</span>
+                    <p>
+                        Specialized in computational genomics, non-coding RNA analysis (miRNA & lncRNA),
+                        and next-generation sequencing (NGS) data analysis with a focus on
+                        transcriptomics and functional genomics.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Research Internship – RNA-Seq & Small RNA Analysis</h3>
+                    <span class="timeline-date">2019 – 2020</span>
+                    <p>
+                        Worked on drought-responsive miRNA identification using small RNA sequencing,
+                        differential expression analysis, and target gene prediction in rice cultivars.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Projects Section -->
+    <section id="research">
+        <div class="section-header">
+            <div class="section-label">Research</div>
+            <h2 class="section-title">Academic Projects</h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle">Computational and experimental research in genomics, transcriptomics, and systems biology</p>
+        </div>
+        
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-number">01</div>
+                <span class="project-tag">Genomics</span>
+                <h3>Genome Assembly & Annotation</h3>
+                <p>Comprehensive genome assembly of insects and microbes using state-of-the-art tools including MaSurca, CANU, and HiFiasm. Performed functional annotation and identified genes of interest for downstream wet-lab validation studies.</p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-number">02</div>
+                <span class="project-tag">Transcriptomics</span>
+                <h3>Drought-Responsive miRNAs</h3>
+                <p>Identified microRNAs playing crucial roles in abiotic stress mechanisms in drought-tolerant rice varieties through comprehensive small RNA sequencing analysis at ICAR-National Institute for Plant Biotechnology, New Delhi.</p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-number">03</div>
+                <span class="project-tag">Metabolomics</span>
+                <h3>Colchicine Biosynthesis</h3>
+                <p>Elucidated colchicine biosynthesis pathway in Gloriosa superba using HPLC/HPTLC profiling combined with transcriptome analysis. Identified key genes, miRNAs, and transcription factors regulating secondary metabolite production.</p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-number">04</div>
+                <span class="project-tag">Metagenomics</span>
+                <h3>Microbiome Analysis</h3>
+                <p>Conducted comprehensive metagenomic analysis of soil, agricultural formulations, and insect gut microbiomes. Implemented quality control, taxonomic classification, and abundance estimation using advanced bioinformatics pipelines.</p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-number">05</div>
+                <span class="project-tag">QTL Mapping</span>
+                <h3>Drought Tolerance QTLs</h3>
+                <p>Elucidated putative candidate genes underlying drought tolerance QTLs (qDTY1.1, qEMF3, qDTY2.1, qDTY3.1) in rice through pathway analysis and trait ontology. Validated gene expression patterns via RNA-Seq analysis.</p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-number">06</div>
+                <span class="project-tag">Molecular Genetics</span>
+                <h3>SSR-based Fingerprinting</h3>
+                <p>Developed and validated novel SSR molecular markers for characterizing little millet germplasm. Successfully differentiated newly released varieties from existing accessions for seed bank registration.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" style="background: var(--background);">
+        <div class="section-header">
+            <div class="section-label">Publications</div>
+            <h2 class="section-title">Research Contributions</h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle">Selected publications from peer-reviewed journals and scholarly book chapters</p>
+        </div>
+        
+        <div class="publications-container">
+            <div class="publication-item">
+                <p>
+                    <strong>Pathak, J., Selvamani, S.B., Srivastava, S., Gopal, A., et al.</strong> (2025). miR-92a-3p regulates egg fertilization through ribogenesis in the invasive fall armyworm Spodoptera frugiperda. <em>International Journal of Biological Macromolecules</em>. <span class="impact-factor">IF: 8.5</span>
+                </p>
+            </div>
+
+            <div class="publication-item">
+                <p>
+                    <strong>Mohan, M., Augustine, N., Selvamani, S.B., et al.</strong> (2024). The miniature genome of broad mite, Polyphagotarsonemus latus (Tarsonemidae: Acari). <em>Scientific Data</em>, 11(1), 748. <span class="impact-factor">IF: 5.8</span>
+                </p>
+            </div>
+
+            <div class="publication-item">
+                <p>
+                    <strong>Channappa, M., Thiruvengadam, V., Shivakumar, N., et al.</strong> (2025). Recombinase polymerase amplification assay for sensitive and rapid detection of invasive fall armyworm, Spodoptera frugiperda. <em>Scientific Reports</em>, 15(1), 18026. <span class="impact-factor">IF: 3.9</span>
+                </p>
+            </div>
+
+            <div class="publication-item">
+                <p>
+                    <strong>Yang, H., Huebner, K., Hampel, C., Selvamani, S.B., et al.</strong> (2023). ATF2 loss promotes 5-FU resistance in colon cancer cells via activation of the ATR-Chk1 damage response pathway. <em>BMC Cancer</em>, 23(1), 1-15. <span class="impact-factor">IF: 3.4</span>
+                </p>
+            </div>
+
+            <div class="publication-item">
+                <p>
+                    <strong>Selvamani, S.B., Nallusamy, S., Kamalanathan, V., et al.</strong> (2025). Understanding the mechanisms of long noncoding RNAs in response to bacterial blight in rice. <em>Physiological and Molecular Plant Pathology</em>, 135, 102486. <span class="impact-factor">IF: 3.3</span>
+                </p>
+            </div>
+
+            <div class="publication-item">
+                <p>
+                    <strong>Ramasamy, G.G., Reddy, K.V.N., Negi, N., Selvamani, S.B., et al.</strong> (2025). The first report of Hibiscus latent Fort Pierce virus from India and its insect association with mealybug. <em>Physiological and Molecular Plant Pathology</em>, 102854. <span class="impact-factor">IF: 3.3</span>
+                </p>
+            </div>
+
+            <div class="publication-item">
+                <p>
+                    <strong>GeethaThanuja, K., Karthikeyan, S., Selvamani, S.B., et al.</strong> (2022). Rice Rhizosphere Metagenome in Association with Biochar Application under Elevated Carbon Dioxide. <em>ACS Agricultural Science & Technology</em>. <span class="impact-factor">IF: 2.9</span>
+                </p>
+            </div>
+
+            <div class="publication-item">
+                <p>
+                    <strong>Karan, R., Prasannakumar, M.K., Selvamani, S.B., et al.</strong> (2025). Genomics and Transcriptomics of Candidatus Phytoplasma Asteris Induced Sesame Phyllody. <em>Journal of Basic Microbiology</em>, e70080. <span class="impact-factor">IF: 2.7</span>
+                </p>
+            </div>
+
+            <div class="publication-stats">
+                <div class="stat-number">22+</div>
+                <p>Published research articles in peer-reviewed international journals and book chapters</p>
+                <a href="https://scholar.google.com/citations" target="_blank" class="btn btn-primary">View Complete Publication List</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="section-header">
+            <div class="section-label">Expertise</div>
+            <h2 class="section-title">Technical Competencies</h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle">Comprehensive skill set in bioinformatics, genomics, and computational biology</p>
+        </div>
+        
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>NGS Data Analysis</h3>
+                <ul class="skill-list">
+                    <li>Genome Assembly & Annotation</li>
+                    <li>Transcriptomics (mRNA, lncRNA, small RNA)</li>
+                    <li>Metagenomics & Microbiome Analysis</li>
+                    <li>Variant Calling (SNP/INDEL)</li>
+                    <li>QTL-Seq & QTL Mapping</li>
+                    <li>Evolutionary & Comparative Genomics</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Wet Laboratory</h3>
+                <ul class="skill-list">
+                    <li>Nucleic Acid Extraction (DNA/RNA)</li>
+                    <li>PCR & Real-Time qPCR</li>
+                    <li>Gel Electrophoresis</li>
+                    <li>HPLC & HPTLC</li>
+                    <li>Insect Handling & Culture Maintenance</li>
+                    <li>Molecular Marker Development (SSR)</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Programming & Scripting</h3>
+                <ul class="skill-list">
+                    <li>Python & Biopython</li>
+                    <li>R & Bioconductor</li>
+                    <li>Shell Scripting (Bash)</li>
+                    <li>C & C++</li>
+                    <li>Linux/Unix (Ubuntu, CentOS)</li>
+                    <li>Version Control (Git)</li>
+                    <li>Pipeline Development (Snakemake, Nextflow)</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Specialized Tools</h3>
+                <ul class="skill-list">
+                    <li>Genome Assemblers: MaSurca, CANU, SPAdes, HiFiasm</li>
+                    <li>AUGUSTUS, MAKER Pipeline</li>
+                    <li>Trinity, Kallisto, Salmon</li>
+                    <li>GATK, QIIME2, KRAKEN2</li>
+                    <li>Snakemake, Nextflow, Conda</li>
+                    <li>Molecular Docking & MD Simulation</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-content">
+            <div class="section-header">
+                <div class="section-label">Contact</div>
+                <h2 class="section-title">Let's Collaborate</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Open to research collaborations and scientific discussions in bioinformatics and genomics</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="icon">📧</div>
+                    <div class="label">Email</div>
+                    <a href="mailto:selvababuselvamani@gmail.com">selvababuselvamani@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <div class="icon">📱</div>
+                    <div class="label">Phone</div>
+                    <a href="tel:+919843798175">+91 98437 98175</a>
+                </div>
+                <div class="contact-item">
+                    <div class="icon">📍</div>
+                    <div class="label">Location</div>
+                    <span>Europe</span>
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem;">
+                <a href="mailto:selvababuselvamani@gmail.com" class="btn btn-primary">Send Message</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    
+    <!-- Future Image Gallery Section -->
+    <section id="gallery">
+        <h2 class="section-title">Research Gallery</h2>
+        <p class="section-subtitle">
+            Space reserved for future research images, figures, genome visualizations, and project illustrations.
+        </p>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div style="height:220px; background:#f1f5f9; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#64748b;">
+                    Image Placeholder (Research Figure 1)
+                </div>
+            </div>
+            <div class="project-card">
+                <div style="height:220px; background:#f1f5f9; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#64748b;">
+                    Image Placeholder (Genome / Pipeline)
+                </div>
+            </div>
+            <div class="project-card">
+                <div style="height:220px; background:#f1f5f9; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#64748b;">
+                    Image Placeholder (Publication Visual)
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">SBS</div>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/selva-babu-selvamani-386177148/" target="_blank">LinkedIn</a>
+                <a href="https://scholar.google.com/citations" target="_blank">Scholar</a>
+                <a href="https://github.com/SELVABABU-SELVAMANI" target="_blank">GitHub</a>
+                <a href="https://www.researchgate.net/profile/Selva-Babu-Selvamani-3" target="_blank">ResearchGate</a>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2026 Selva Babu Selvamani. All rights reserved.
+        </div>
+    
+        <div style="margin-top:20px; font-size:0.9rem; opacity:0.8;">
+            🌍 Visitors: <span id="visitor-count">Loading...</span>
+        </div>
+    </footer>
+    
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.project-card, .skill-category, .publication-item, .education-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(el);
+        });
+    </script>
+
+<script>
+fetch("https://api.countapi.xyz/hit/selva-babu-academic-portfolio/visits")
+.then(res => res.json())
+.then(data => {
+    const el = document.getElementById("visitor-count");
+    if(el){ el.innerText = data.value; }
+})
+.catch(()=> {
+    const el = document.getElementById("visitor-count");
+    if(el){ el.innerText = "N/A"; }
+});
+</script>
+
+</body>
+</html>
